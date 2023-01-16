@@ -8,8 +8,7 @@
 
 <h:head>
 	<meta charset="utf-8"/>
-	<title>JSF 06 - EJB, bazy danych (mapowanie
-		obiektowo-relacyjne)</title>
+	<title>Dziennik)</title>
 </h:head>
 <h:body style="background-color: #eee; margin: 0.5em;">
 
@@ -18,7 +17,7 @@
 		<h:form>
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel value="nazwisko:" />
-				<p:inputText value="#{personListBB.surname}" />
+				<p:inputText value="#{ocenaListBB.czyja_ocena}" />
 				<p:commandButton value="Szukaj" update="form-table" />
 			</h:panelGrid>
 		</h:form>
@@ -29,30 +28,30 @@
 	<h:form id="form-table" style="margin-bottom:1em;">
 
 		<p:commandButton value="Dodaj nową osobę"
-			action="#{personListBB.newPerson()}" style="margin-bottom:1em;"/>
+			action="#{ocenaListBB.newOcena()}" style="margin-bottom:1em;"/>
 
-		<p:dataTable value="#{personListBB.list}" var="p">
+		<p:dataTable value="#{ocenaListBB.list}" var="p">
 
 			<p:column priority="5">
 				<f:facet name="header">
 					<h:outputText value="imię" />
 				</f:facet>
-				<h:outputText value="#{p.name}" />
+				<h:outputText value="#{p.idocena}" />
 			</p:column>
 
 			<p:column>
 				<f:facet name="header">
 					<h:outputText value="nazwisko" />
 				</f:facet>
-				<h:outputText value="#{p.surname}" />
+				<h:outputText value="#{p.czyja_ocena}" />
 			</p:column>
 
 			<p:column priority="4">
 				<f:facet name="header">
 					<h:outputText value="ocena" />
 				</f:facet>
-				<h:outputText value="#{p.birthdate}">
-					<f:convertDateTime pattern="dd-MM-yyyy" />
+				<h:outputText value="#{p.data_wystawienia}">
+					<f:convertDateTime pattern="yyyy-MM-dd" />
 				</h:outputText>
 			</p:column>
 
@@ -62,13 +61,13 @@
 				</f:facet>
 
 				<p:commandButton value="Edytuj"
-					action="#{personListBB.editPerson(p)}" />
+					action="#{ocenaListBB.editOcena(p)}" />
 
 				<p:commandButton value="Usuń"
-					action="#{personListBB.deletePerson(p)}" update="@form" />
+					action="#{ocenaListBB.deleteOcena(p)}" update="@form" />
 
-				<p:button outcome="personEditGET" value="Edytuj (GET)">
-					<f:param name="p" value="#{p.idperson}" />
+				<p:button outcome="ocenaEditGET" value="Edytuj (GET)">
+					<f:param name="p" value="#{p.idocena}" />
 				</p:button>
 			</p:column>
 

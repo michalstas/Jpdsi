@@ -7,9 +7,9 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <f:metadata>
-	<f:viewParam name="p" value="#{personEditGETBB.person.idperson}"
+	<f:viewParam name="p" value="#{ocenaEditGETBB.ocena.idocena}"
 		converterMessage="Nieoczekiwany błąd"/>
-	<f:event type="preRenderView" listener="#{personEditGETBB.onLoad()}" />
+	<f:event type="preRenderView" listener="#{ocenaEditGETBB.onLoad()}" />
 </f:metadata>
 
 <h:head>
@@ -21,41 +21,41 @@
 
 	<p:panel toggleable="true" header="Edycja rekordu">
 
-		<h:form rendered="#{personEditBB.person != null}">
+		<h:form rendered="#{ocenaEditBB.ocena != null}">
 			<h:panelGrid columns="3" cellpadding="5">
 
-				<h:outputLabel for="p-name" value="imię:" />
-				<p:inputText id="p-name" value="#{personEditGETBB.person.name}"
+				<h:outputLabel for="p-idocena" value="imię:" />
+				<p:inputText id="p-idocena" value="#{ocenaEditGETBB.ocena.idocena}"
 					required="true" requiredMessage="Podaj imię"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-name" display="icon"/>
+				<p:message for="p-idocena" display="icon"/>
 
-				<h:outputLabel for="p-surname" value="nazwisko:" />
-				<p:inputText id="p-surname" value="#{personEditGETBB.person.surname}"
+				<h:outputLabel for="p-czyja_ocena" value="nazwisko:" />
+				<p:inputText id="p-czyja_ocena" value="#{ocenaEditGETBB.ocena.czyja_ocena}"
 					required="true" requiredMessage="podaj nazwisko"
 					validatorMessage="co najwyżej 40 znaków">
 					<f:validateLength maximum="40" />
 				</p:inputText>
-				<p:message for="p-surname" display="icon"/>
+				<p:message for="p-czyja_ocena" display="icon"/>
 
-				<h:outputLabel for="p-date" value="data ur.:" />
-				<p:inputText id="p-date" value="#{personEditGETBB.person.birthdate}"
+				<h:outputLabel for="p-data_wystawienia" value="data ur.:" />
+				<p:inputText id="p-data_wystawienia" value="#{ocenaEditGETBB.ocena.data_wystawienia}"
 					required="true" requiredMessage="podaj datę urodzenia"
-					converterMessage="niepoprawny format daty (np. 15-07-2018)">
-					<f:convertDateTime pattern="dd-MM-yyyy"/>
+					converterMessage="niepoprawny format daty (np. 2000-01-30)">
+					<f:convertDateTime pattern="yyyy-MM-dd"/>
 			    </p:inputText>
-				<p:message for="p-date" display="icon"/>
+				<p:message for="p-data_wystawienia" display="icon"/>
 
 			</h:panelGrid>
 
 			<p:messages id="msgs" />
 
-			<p:commandButton value="Zapisz" action="#{personEditGETBB.saveData()}"
+			<p:commandButton value="Zapisz" action="#{ocenaEditGETBB.saveData()}"
 				style="margin-right: 1em;" update="@form" />
 
-			<p:button value="Anuluj" outcome="personList" />
+			<p:button value="Anuluj" outcome="ocenaList" />
 		</h:form>
 
 	</p:panel>
