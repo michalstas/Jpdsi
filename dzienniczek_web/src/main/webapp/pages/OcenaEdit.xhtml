@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:metadata>
+    <f:viewAction action="#{ocenaEditBB.onLoad()}" />
+</f:metadata>
+
+<h:head>
+	<meta charset="utf-8"/>
+	<title>JSF 06 - EJB, bazy danych (mapowanie
+		obiektowo-relacyjne)</title>
+</h:head>
+
+<h:body style="background-color: #eee; margin: 0.5em;">
+
+	<p:panel toggleable="true" header="Edycja rekordu">
+
+		<h:form rendered="#{ocenaEditBB.ocena != null}">
+			<h:panelGrid columns="3" cellpadding="5">
+
+				<h:outputLabel for="p-name" value="wartość oceny:" />
+				<p:inputText id="p-name" value="#{ocenaEditBB.ocena.wartośćOceny}"
+					required="true" requiredMessage="Podaj wartość oceny"
+					validatorMessage="co najwyżej 1 znaków">
+					<f:validateLength maximum="1" />
+				</p:inputText>
+				<p:message for="p-name" display="icon"/>
+
+				<h:outputLabel for="p-date" value="data wystawienia:" />
+				<p:inputText id="p-date" value="#{ocenaEditBB.ocena.dataWystawienia}"
+					required="true" requiredMessage="podaj datę wystawienia"
+					converterMessage="niepoprawny format daty (np. 2000-07-20)">
+					<f:convertDateTime pattern="yyyy-MM-dd"/>
+			    </p:inputText>
+				<p:message for="p-date" display="icon"/>
+				
+			</h:panelGrid>
+
+			<p:messages id="msgs" />
+
+			<p:commandButton value="Zapisz" action="#{ocenaEditBB.saveData()}"
+				style="margin-right: 1em;" update="@form" />
+		</h:form>
+
+	</p:panel>
+
+</h:body>
+
+</html>

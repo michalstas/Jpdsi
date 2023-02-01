@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	
+	<ui:composition template="/templates/main-template.xhtml">
+		<ui:define name="content">
+	<div id="content-wrap2">		
+			
+			<div class="container mt-5">
+			<h:form id="search-form" class="searchForm">
+				<legend>Opcje wyszukiwania</legend>
+				  <div class="mb-3">
+				    <label for="przedmiot" class="form-label">Przedmiot</label>
+				    <h:inputText class="form-control"  id="przedmiot" value="#{ocenaListBB.przedmiot}"/>
+				  </div>
+				  <h:commandButton class="btn btn-primary" value="Filtruj" update="form-table"/>
+			</h:form>	
+			</div>
+			<div class="container mt-5">
+				
+
+				<h:form id="form-table">
+				<table id="tab_people" class="table searchForm">
+					<thead>
+						<tr>
+							<th>Ocena</th>
+							<th>Przedmiot</th>
+							<th>Data_Wystawienia</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						   <ui:repeat var="o" value="#{ocenaListBB.list}">
+							<tr>
+								<td>#{o.wartośćOceny}</td>
+								<td>#{o.zajęcia.przedmiot.nazwaPrzedmiotu}</td>
+								<td>#{o.dataWystawienia}</td>
+							</tr>
+						   </ui:repeat>
+						</tr>
+					</tbody>
+				</table>
+				</h:form>                                                               
+			</div>
+</div>
+		</ui:define>
+	</ui:composition>
+</html>

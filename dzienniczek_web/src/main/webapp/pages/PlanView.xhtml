@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	
+	<ui:composition template="/templates/main-template.xhtml">
+		<ui:define name="content">
+			
+			<div class="container mt-5">
+				
+
+				<h:form id="form-table">
+				<table id="tab_people" class="table searchForm">
+					<thead>
+						<tr>
+							<th>Poniedziałek</th>
+							<th>Godzina</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						   <ui:repeat var="o" value="#{planBB.list}">
+							<tr>
+								<td>#{o.przedmiot.nazwaPrzedmiotu}</td>
+								<td>#{o.godzina}</td>	
+							</tr>
+						   </ui:repeat>		   
+						</tr>
+					</tbody>
+				</table>
+				
+				<table id="tab_people" class="table searchForm">
+					<thead>
+						<tr>
+							<th>Wtorek</th>
+							<th>Godzina</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						   <ui:repeat var="o" value="#{planBB.list2}">
+							<tr>
+								<td>#{o.przedmiot.nazwaPrzedmiotu}</td>
+								<td>#{o.godzina}</td>
+							</tr>
+						   </ui:repeat>		   
+						</tr>
+					</tbody>
+				</table>
+				
+				<table id="tab_people" class="table searchForm">
+					<thead>
+						<tr>
+							<th>Środa</th>
+							<th>Godzina</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						   <ui:repeat var="o" value="#{planBB.list3}">
+							<tr>
+								<td>#{o.przedmiot.nazwaPrzedmiotu}</td>
+								<td>#{o.godzina}</td>
+							</tr>
+						   </ui:repeat>		   
+						</tr>
+					</tbody>
+				</table>
+				
+				<table id="tab_people" class="table searchForm">
+					<thead>
+						<tr>
+							<th>Czwartek</th>
+							<th>Godzina</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						   <ui:repeat var="o" value="#{planBB.list4}">
+							<tr>
+								<td>#{o.przedmiot.nazwaPrzedmiotu}</td>
+								<td>#{o.godzina}</td>
+							</tr>
+						   </ui:repeat>		   
+						</tr>
+					</tbody>
+				</table>
+				
+				<table id="tab_people" class="table searchForm">
+					<thead>
+						<tr>
+							<th>Piątek</th>
+							<th>Godzina</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						   <ui:repeat var="o" value="#{planBB.list5}">
+							<tr>
+								<td>#{o.przedmiot.nazwaPrzedmiotu}</td>
+								<td>#{o.godzina}</td>
+							</tr>
+						   </ui:repeat>		   
+						</tr>
+					</tbody>
+				</table>
+				
+				
+				</h:form>                                                               
+			</div>
+
+		</ui:define>
+	</ui:composition>
+</html>

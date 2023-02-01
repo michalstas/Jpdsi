@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">	
+<f:view locale="#{facesContext.externalContext.requestLocale}">	
+	<ui:composition template="/templates/main-template.xhtml">
+		<ui:define name="content">
+	
+			<header id="home" name="home">
+				<div class="hero-img">
+					<div class="hero-shadow"></div>
+					<div class="hero-text">
+						<h1 data-aos="fade-up" data-aos-delay="200"><span class="color-text">#{txtMain.projectName}</span></h1>
+						<p data-aos="fade-up" data-aos-delay="400">#{txtMain.motto}</p>
+					</div>
+					<a href="#opcje"><i class="fa-solid fa-chevron-down bounce-top"></i></a>
+				</div>
+			</header>
+			<main>
+			
+			
+				<c:set var = "admin" scope = "session" value = "admin"/>
+				<c:set var = "uczen" scope = "session" value = "uczen"/>
+				<c:set var = "nauczyciel" scope = "session" value = "nauczyciel"/>
+				
+<c:if test="#{remoteClient.details.rola eq uczen}">									
+				<section id="opcje" class="prices py-5 bg-light" name="prices">
+					<h2>#{txtMain.options} #{remoteClient.details.rola}</h2>
+					<div class="underline"></div>
+					<div class="container">
+						<div class="price-wrap row text-center justify-content-center">
+							<div class="col-md-6 col-xl-4">
+								<div class="price-box">
+									<h3>#{txtMain.grades}</h3>
+									<hr />
+									<p><span>#{txtMain.grades2}:</span> <td>#{remoteClient.details.imie} </td> <td>#{remoteClient.details.nazwisko}</td></p>
+									<a class="btn btn-success" href="OcenaList.xhtml">#{txtMain.check}</a>
+								</div>
+							</div>
+							<div class="col-md-6 col-xl-4">
+								<div class="price-box">
+									<h3>#{txtMain.timetable}</h3>
+									<hr />
+									<p><span>#{txtMain.timetable}:</span> </p>
+									<a class="btn btn-secondary" href="PlanView.xhtml">#{txtMain.check}</a>
+								</div>
+							</div>
+							<div class="col-md-6 col-xl-4">
+								<div class="price-box">
+									<h3>#{txtMain.request}</h3>
+									<hr />
+									<p><span>#{txtMain.request2}</span></p>
+									<a class="btn btn-success" href="MainView.xhtml">#{txtMain.sub}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+</c:if>
+<c:if test="#{remoteClient.details.rola eq nauczyciel}">									
+				<section id="opcje" class="prices py-5 bg-light" name="prices">
+					<h2>#{txtMain.options} #{remoteClient.details.rola}</h2>
+					<div class="underline"></div>
+					<div class="container">
+						<div class="price-wrap row text-center justify-content-center">
+							<div class="col-md-6 col-xl-4">
+								<div class="price-box">
+									<h3>#{txtMain.grad}</h3>
+									<hr />
+									<p><span>#{txtMain.tim}:</span> <td>#{remoteClient.details.imie} </td> <td>#{remoteClient.details.nazwisko}</td></p>
+									<a class="btn btn-success" href="NauczycielList.xhtml">#{txtMain.check}</a>
+								</div>
+							</div>
+							<div class="col-md-6 col-xl-4">
+								<div class="price-box">
+									<h3>#{txtMain.request}</h3>
+									<hr />
+									<p><span>#{txtMain.request2}:</span></p>
+									<a class="btn btn-success" href="MainView.xhtml">#{txtMain.sub}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+</c:if>				
+				
+				
+				
+	
+				<section id="contact" class="contact py-5" name="contact">
+					<h2>#{txtMain.contact}</h2>
+					<div class="underline"></div>
+					<div class="container">
+						<div class="row text-center contact-us">
+							<div class="col-sm-6 col-lg-4 contact-item order-1">
+								<h3>Katowice</h3>
+								<p>ul. Katowicka 0</p>
+								<p>00-000 Katowice</p>
+								<p>+48 123 456 789</p>
+								<p>email@gmail.com</p>
+							</div>
+							<div class="col-lg-4 order-0 contact-item order-lg-1">
+								<h3>social media</h3>
+								<div class="social-media">
+									<a href="#"><i class="fab fa-facebook"></i></a
+									><a href="#"><i class="fab fa-twitter"></i></a
+									><a href="#"><i class="fab fa-linkedin-in"></i></a>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-4 contact-item order-1">
+								<h3>#{txtMain.warsaw}</h3>
+								<p>ul. Warszawska 0</p>
+								<p>00-000 #{txtMain.warsaw}</p>
+								<p>+48 123 456 789</p>
+								<p>email@gmail.com</p>
+							</div>
+						</div>
+					</div>
+					<div class="content-shadow"></div>
+				</section>
+			</main>
+			<footer class="bg-dark text-light py-4 text-center">
+				<p class="mb-0">&copy; <span class="footer__year"></span> #{txtMain.projectName}</p>
+			</footer>
+	
+		</ui:define>
+	</ui:composition>
+	</f:view>
+</html>

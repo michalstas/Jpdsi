@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	 
+	<ui:composition template="/templates/main-template.xhtml">
+		<ui:define name="content">
+			
+			<section class="login bg-light py-5">
+			    <div class="container">
+				 	<h:form class="loginForm">
+			        	<div class="mb-3">
+			            	<label for="id_login" class="form-label">Login: </label>
+							<h:inputText class="form-control" id="login" value="#{loginBB.login}" required="true" requiredMessage="podaj login"/>
+			        	</div>
+			        	<div class="mb-3">
+			            	<label for="id_pass" class="form-label">#{txtMain.pass}: </label>
+							<h:inputSecret class="form-control" id="pass" value="#{loginBB.password}" required="true" requiredMessage="podaj hasło"/>
+			        	</div>
+						<h:commandButton class="btn btn-primary" value="#{txtMain.login}" action="#{loginBB.doLogin()}" update="msg" />
+						<a href="RegisterView.xhtml" class="btn btn-primary ms-5">#{txtMain.regi}</a>
+						<h:messages />
+					</h:form>
+			   </div>
+			</section>
+		
+		</ui:define>
+	</ui:composition>
+</html>
